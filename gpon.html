@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPON Router Sozlamalari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
+      --secondary: #1e40af;
+      --accent: #f43f5e;
+      --background: #f8fafc;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    
+    header {
+      padding: 24px 0;
+      position: relative;
+    }
+    
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px var(--shadow);
+    }
+    
+    .back-button:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+    
+    .back-button svg {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 2.5rem;
+      color: var(--secondary);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+    
+    .intro {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+    
+    h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    
+    .card:hover h2::after {
+      width: 100%;
+    }
+    
+    .step {
+      margin-bottom: 24px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .step-number {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    .step h3 {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--secondary);
+      font-size: 1.3rem;
+    }
+    
+    .step p {
+      margin: 10px 0;
+      color: var(--text);
+    }
+    
+    .code-block {
+      background-color: #1e293b;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 16px 0;
+      font-family: monospace;
+      line-height: 1.5;
+    }
+    
+    .media-container {
+      margin: 20px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px var(--shadow);
+    }
+    
+    .media-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .media-container:hover img {
+      transform: scale(1.02);
+    }
+    
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px var(--shadow);
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .important-note {
+      background-color: rgba(249, 115, 22, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 16px;
+      margin: 24px 0;
+      border-radius: 4px;
+    }
+    
+    .important-note::before {
+      content: "⚠️ Muhim eslatma: ";
+      font-weight: bold;
+      color: var(--warning);
+    }
+    
+    .ip-address {
+      font-family: monospace;
+      background-color: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--secondary);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease forwards;
+      opacity: 0;
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .card {
+        padding: 24px;
+      }
+      
+      .step {
+        padding: 16px;
+      }
+      
+      .code-block {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html" class="back-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Ortga qaytish
+      </a>
+      <h1 class="fade-in">GPON Router Sozlamalari</h1>
+    </header>
+    
+    <main>
+
+      <section class="card fade-in delay-2">
+        <h2>GPON Router nima?</h2>
+        <p>GPON (Gigabit Passive Optical Network) - bu yuqori tezlikdagi internet aloqasini ta'minlovchi zamonaviy texnologiya. GPON router optik tolali kabel orqali internetni qabul qilib, uni simsiz (Wi-Fi) va simli tarmoq orqali qurilmalarga uzatadi.</p>
+        
+        <div class="media-container">
+          <img src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg" alt="GPON Router">
+        </div>
+        
+        <div class="important-note">
+          GPON router oddiy routerlardan farqli ravishda, optik tolali kabel orqali ishlaydi va ancha yuqori tezlikda internet aloqasini ta'minlaydi.
+        </div>
+      </section>
+      
+      <section class="card fade-in delay-3">
+        <h2>GPON Router qanday ishlaydi?</h2>
+        <p>GPON router quyidagi asosiy qismlardan iborat:</p>
+        <ul>
+          <li>Optik signal qabul qiluvchi port (SC/APC yoki SC/UPC)</li>
+          <li>Ethernet portlari (LAN)</li>
+          <li>Wi-Fi antennalari</li>
+          <li>Elektr ta'minoti</li>
+        </ul>
+        
+        <div class="video-container">
+<iframe width="1296" height="729" src="https://www.youtube.com/embed/TXTxnlAVX-U" title="Gpn optika uztelecom wifi internet routeriga lan kabel orqali qo&#39;shimcha router ulash" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        </div>
+      </section>
+      
+      <section class="card fade-in delay-4">
+        <h2>GPON Routerni ulash</h2>
+        
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>Optik kabelni ulash</h3>
+          <p>Provayderdan kelgan optik kabelni routerning GPON portiga ulang. Odatda bu port yashil rangda bo'ladi.</p>
+          <div class="important-note">
+            Optik kabelni ulaganda ehtiyot bo'ling - uni bukmaslik va ezmaslik kerak!
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Elektr ta'minotini ulash</h3>
+          <p>Routerning quvvat adapterini elektr manbaiga ulang. Router yonganini indikator chiroqlaridan tekshiring.</p>
+        </div>
+        
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3>Internet kabelini ulash</h3>
+          <p>Kompyuterni routerning LAN portlaridan biriga ulang. Bu port odatda sariq yoki ko'k rangda bo'ladi.</p>
+        </div>
+      </section>
+      
+      <section class="card fade-in delay-5">
+        <h2>Admin panelga kirish</h2>
+        
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>Brauzerga kirish</h3>
+          <p>Kompyuteringizda brauzer (Chrome, Firefox va h.k.) oching va quyidagi IP manzilni kiriting:</p>
+          <div class="code-block">
+            <code class="ip-address">192.168.1.1</code>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Login ma'lumotlarini kiritish</h3>
+          <p>Standart login ma'lumotlari:</p>
+          <div class="code-block">
+            Login: admin
+            Parol: admin</code>
+          </div>
+          <div class="important-note">
+            Xavfsizlik uchun standart parolni o'zgartirishni tavsiya qilamiz!
+          </div>
+        </div>
+      </section>
+      
+      <section class="card fade-in delay-5">
+        <h2>Internet sozlamalarini kiritish</h2>
+        
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>WAN sozlamalari</h3>
+          <p>Admin panelda "Network" yoki "WAN" bo'limini toping va quyidagi sozlamalarni kiriting:</p>
+          <ul>
+            <li>Connection Type: DHCP (Auto IP)</li>
+            <li>VLAN ID: Provayder bergan ID (odatda 100)</li>
+          </ul>
+        </div>
+        
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Wi-Fi sozlamalari</h3>
+          <p>Wi-Fi tarmoq nomini (SSID) va parolini o'rnating:</p>
+          <ul>
+            <li>Tarmoq nomi: O'zingiz xohlagan nom</li>
+            <li>Xavfsizlik turi: WPA2-PSK</li>
+            <li>Parol: Kamida 8 ta belgidan iborat murakkab parol</li>
+          </ul>
+        </div>
+        
+        <div class="important-note">
+          Barcha sozlamalarni kiritgandan so'ng "Save" yoki "Apply" tugmasini bosing va routerni qayta ishga tushiring.
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <p>© 2025 GPON Router Qo'llanmasi | Barcha huquqlar himoyalangan</p>
+    </footer>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      fadeElements.forEach(element => {
+        element.style.opacity = '1';
+      });
+    });
+  </script>
+</body>
+</html>
